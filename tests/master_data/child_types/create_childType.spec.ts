@@ -3,8 +3,8 @@ import { HomePage } from '../../../pages/home.po';
 import { ChildTypesPage } from '../../../pages/master_data/childTypes.po';
 import { LoginPage } from '../../../pages/login/login.po';
 
-const childTypes_page = 'http://localhost:8000/childTypes';
-const home_page = 'http://localhost:8000/';
+//const childTypes_page = 'http://localhost:8000/childTypes';
+//const home_page = 'http://localhost:8000/';
 
 
 test("01. add new child type", async ({ page }) => {
