@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../../src/pages/login/login.po';
-import { HomePage } from '../../../src/pages/home.po';
-import { ChildTypesPage } from '../../../src/pages/master_data/childTypes.po';
+import { HomePage } from '../../../pages/home.po';
+import { ChildTypesPage } from '../../../pages/master_data/childTypes.po';
+import { LoginPage } from '../../../pages/login/login.po';
 
 const childTypes_page = 'http://localhost:8000/childTypes';
 const home_page = 'http://localhost:8000/';
