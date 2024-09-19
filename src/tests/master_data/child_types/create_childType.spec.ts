@@ -7,7 +7,7 @@ const childTypes_page = 'http://localhost:8000/childTypes';
 const home_page = 'http://localhost:8000/';
 
 
-test('01. add new child type', async ({ page }) => {
+test("01. add new child type", async ({ page }) => {
   const loginPage = new LoginPage(page);
   const homePage=new HomePage(page);
   const childTypesPage = new ChildTypesPage(page);
