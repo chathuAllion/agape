@@ -1,17 +1,25 @@
 {
-  "name": "agape_framework",
+  "name": "agape_testing",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "(php artisan serve) & npm run dev",
+    "test": "playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.47.1",
-    "@types/node": "^22.5.5"
+    "@playwright/test": "^1.48.0",
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^22.7.5",
+    "sequelize-cli": "^6.6.2"
   },
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
+    "pg": "^8.13.0",
+    "sequelize": "^6.37.4"
   }
 }

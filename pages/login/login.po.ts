@@ -11,11 +11,10 @@ export class LoginPage {
         this.page = page;
         this.emailTextField = page.locator('#email');
         this.passwordTextField = page.locator('#password');
-        //this.signInButton = page.getByRole('button', { name: 'Sign                        in' });
         this.signInButton=page.locator("//button[@type='submit']");
     }
 
-    // navigate to desired URL
+    // navigate to desired URL.
     async navigateTo(pageUrl: any) {
         await this.page.goto(pageUrl);
         await this.page.waitForLoadState('domcontentloaded');
@@ -42,9 +41,11 @@ export class LoginPage {
         const constants = new ConstantsPage(this.page);
 
         await this.navigateTo('/login');
-        await this.emailTextField.fill(constants.admin_username);            
-        await this.passwordTextField.fill(constants.admin_password);
+        await this.emailTextField.fill(process.env.APP_ADMIN_USERNAME!);            
+        await this.passwordTextField.fill(process.env.APP_ADMIN_PASSWORD!);
         await this.signInButton.click();
+        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForLoadState("networkidle");
+        await this.signInButton.waitFor({ state: 'hidden' });
     };
-
 };

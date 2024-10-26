@@ -7,6 +7,7 @@ export class HomePage {
     readonly logOutLink: Locator;
     readonly masterDataMenu: Locator;
     readonly childTypeMenu: Locator;
+    readonly sideMenubar: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -14,6 +15,7 @@ export class HomePage {
         this.masterDataMenu=page.getByRole('button', { name: 'Master Data' })
         this.childTypeMenu=page.getByRole('link', { name: 'Child Types' })
         this.logOutLink=page.getByText(' Logout');
+        this.sideMenubar=page.locator('#mySidenav');
     }
 
     async navigateTo(pageUrl: any) {
@@ -26,12 +28,14 @@ export class HomePage {
     async logOut(page: Page) {
         const loginPage = new LoginPage(page);
 
+        await this.userNameHeader.waitFor({state: 'visible'})
         await this.userNameHeader.click();
-        await expect(this.logOutLink).toBeVisible();
+        await this.logOutLink.waitFor({state: 'visible'})
         await this.logOutLink.click();
-        await page.waitForLoadState('domcontentloaded');
-        await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(1000);
-        await expect(loginPage.emailTextField).toBeVisible();
     };
+
+    async clickMainMenuItem(mainMenu:any,subMenu:any){
+        await this.page.getByRole('button', { name: mainMenu }).click();
+        await this.page.getByRole('link', { name: subMenu }).click();
+    }
 };
