@@ -129,7 +129,7 @@ export class ChildTypesPage {
     }
 
     async selectShowResults(value:any){
-        await this.page.getByRole('combobox').selectOption(value);
+        await this.paginationShowNoOfRecordsComboBox.selectOption(value);
         await this.page.waitForTimeout(2000);
     }
 
@@ -137,9 +137,8 @@ export class ChildTypesPage {
         await expect.soft(this.page.getByRole('paragraph')).toContainText(value);
     }
 
-    async verifyAvailableResultCounts(values:any[]){
-        await expect.soft(this.paginationShowNoOfRecordsComboBox).toHaveValues(values);
-        await this.page.waitForTimeout(2000);
+    async verifySelectedShowResultsValue(value:any){
+        await expect.soft(this.paginationShowNoOfRecordsComboBox).toHaveValue(value);
     }
 
     //single record view
@@ -154,7 +153,7 @@ export class ChildTypesPage {
         await this.updateButton.click();
         await this.page.waitForLoadState('domcontentloaded');
         await this.page.waitForLoadState("networkidle");
-        await this.pageTitle.waitFor({ state: 'visible' });
+        //await this.pageTitle.waitFor({ state: 'visible' });
     };
 
     async verifyEditPageValues(values:any[]){
