@@ -21,15 +21,15 @@ test("01. field validations - Title", async ({ page }) => {
   await childTypesPage.openEditPageInRow(0);
   await childTypesPage.titleTextField.clear();
   await childTypesPage.updateButton.click();
-  await expect(page.getByText('The title field is required.')).toBeVisible();
+  await expect.soft(page.getByText('The title field is required.')).toBeVisible();
 
   await childTypesPage.titleTextField.fill(constantsPage.field_length_51_Characters);
   await childTypesPage.updateButton.click();
-  await expect(page.getByText('The title field must not be greater than 50 characters.')).toBeVisible();
+  await expect.soft(page.getByText('The title field must not be greater than 50 characters.')).toBeVisible();
 
   await childTypesPage.titleTextField.fill("~`!@#$%^&*()_+-=10{}:\"|<>?/.,;\'][");
   await childTypesPage.updateButton.click();
-  await expect(page.getByText('Child Type successfully updated.')).toBeVisible();
+  await expect.soft(page.getByText('Child Type successfully updated.')).toBeVisible();
 
   await homePage.logOut(page);
 });
@@ -46,7 +46,7 @@ test("02. should not allow duplicate title values", async ({ page }) => {
   await childTypesPage.titleTextField.fill("Atashinda - ABD");
   await childTypesPage.updateButton.click();
 
-  await expect(page.getByText('The title has already been taken.')).toBeVisible();
+  await expect.soft(page.getByText('The title has already been taken.')).toBeVisible();
   await childTypesPage.cancelButton.click();
 
   await homePage.logOut(page);
@@ -64,15 +64,15 @@ test("03. field validations - Description", async ({ page }) => {
   await childTypesPage.openEditPageInRow(0);
   await childTypesPage.descriptionTextField.clear();
   await childTypesPage.updateButton.click();
-  await expect(page.getByText('The description field is required.')).toBeVisible();
+  await expect.soft(page.getByText('The description field is required.')).toBeVisible();
 
   await childTypesPage.descriptionTextField.fill(constantsPage.field_length_201_Characters);
   await childTypesPage.updateButton.click();
-  await expect(page.getByText('The description field must not be greater than 200 characters.')).toBeVisible();
+  await expect.soft(page.getByText('The description field must not be greater than 200 characters.')).toBeVisible();
 
   await childTypesPage.descriptionTextField.fill("~`!@#$%^&*()_+-=10{}:\"|<>?/.,;'\][");
   await childTypesPage.updateButton.click();
-  await expect(page.getByText('Child Type successfully updated.')).toBeVisible();
+  await expect.soft(page.getByText('Child Type successfully updated.')).toBeVisible();
   await homePage.logOut(page);
 });
 
@@ -104,7 +104,7 @@ test("05. update child type successfully", async ({ page }) => {
   await childTypesPage.descriptionTextField.fill("Atashinda Child Type_Updated");
   await childTypesPage.updateButton.click();
 
-  await expect(page.getByText('Child Type successfully updated.')).toBeVisible();
+  await expect.soft(page.getByText('Child Type successfully updated.')).toBeVisible();
   await childTypesPage.cancelButton.click();
   await childTypesPage.verifyGridColumnValueByRowNoAndColumnNo(0,0,"Atashinda_Updated");
   await childTypesPage.verifyGridColumnValueByRowNoAndColumnNo(0,1,"Atashinda Child Type_Updated");
