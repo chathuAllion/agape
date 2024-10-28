@@ -58,7 +58,7 @@ export default defineConfig({
         screenshot: 'only-on-failure',
         launchOptions: { args: ['--ignore-certificate-errors'] },
         // Use prepared auth state.
-        storageState: 'playwright/.auth/user.json',
+        //storageState: 'playwright/.auth/user.json',
         ignoreHTTPSErrors: true,
       },
       testMatch: '**/*.spec.ts',
