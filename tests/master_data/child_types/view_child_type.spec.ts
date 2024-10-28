@@ -102,7 +102,7 @@ test("06. Verify the values in the single record view page", async ({ page }) =>
   await homePage.logOut(page);
 });
 
-test("06. navigations", async ({ page }) => {
+test("07. navigations", async ({ page }) => {
   const dbFunctions = new DBFunctions();
   const homePage=new HomePage(page);
   const childTypesPage = new ChildTypesPage(page);
@@ -121,7 +121,7 @@ test("06. navigations", async ({ page }) => {
   await homePage.logOut(page);
 });
 
-test("07. verify pagination controls", async ({ page }) => {
+test("08. verify pagination controls", async ({ page }) => {
   const homePage=new HomePage(page);
   const childTypesPage = new ChildTypesPage(page);
   const dbFunctions = new DBFunctions();

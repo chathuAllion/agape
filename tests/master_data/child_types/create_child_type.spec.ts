@@ -14,15 +14,18 @@ test("01. field validations - Title", async ({ page }) => {
   const homePage=new HomePage(page);
   const childTypesPage = new ChildTypesPage(page);
 
+  //empty value - not allowed
   await childTypesPage.createNewButton.click();
   await childTypesPage.descriptionTextField.fill("Atashinda Child Type");
   await childTypesPage.createButton.click();
   await expect.soft(page.getByText('The title field is required.')).toBeVisible();
 
+  //exceed max length - not allowed
   await childTypesPage.titleTextField.fill("exceedmaxlengthTitleexceedmaxlengthTitleexceedmaxle");
   await childTypesPage.createButton.click();
   await expect.soft(page.getByText('The title field must not be greater than 50 characters.')).toBeVisible();
 
+  //alpha numeric characters & special characters - allowed
   await childTypesPage.titleTextField.fill("~`!@#$%^&*()_+-=10{}:\"|<>?/.,;\'][");
   await childTypesPage.clickCreateButton();
   await childTypesPage.verifyGridColumnValueByRowNoAndColumnNo(0,0,"~`!@#$%^&*()_+-=10{}:\"|<>?/.,;\'][");
@@ -35,15 +38,18 @@ test("02. field validations - Description", async ({ page }) => {
   const childTypesPage = new ChildTypesPage(page);
   const constantsPage=new ConstantsPage(page);
 
+  //empty value - not allowed
   await childTypesPage.createNewButton.click();
   await childTypesPage.titleTextField.fill("Atashinda1");
   await childTypesPage.createButton.click();
   await expect.soft(page.getByText('The description field is required.')).toBeVisible();
 
+  //exceed max length - not allowed
   await childTypesPage.descriptionTextField.fill(constantsPage.field_length_201_Characters);
   await childTypesPage.createButton.click();
   await expect.soft(page.getByText('The description field must not be greater than 200 characters.')).toBeVisible();
 
+  //alpha numeric characters & special characters - allowed
   await childTypesPage.descriptionTextField.fill("~`!@#$%^&*()_+-=10{}:\"|<>?/.,;'\][");
   await childTypesPage.clickCreateButton();
   await childTypesPage.verifyGridColumnHeaders();

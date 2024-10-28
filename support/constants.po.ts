@@ -7,6 +7,8 @@ export class ConstantsPage {
     readonly admin_password: any;
     readonly field_length_10_Characters: string;
     readonly field_length_11_Characters: string;
+    readonly field_length_21_Characters: string;
+    readonly field_length_20_Characters: string;
     readonly field_length_51_Characters: string;
     readonly field_length_50_Characters: string;
     readonly field_length_31_Characters: string;
@@ -25,6 +27,8 @@ export class ConstantsPage {
         this.admin_password = "Allion@321";
         this.field_length_10_Characters=""
         this.field_length_11_Characters="ten charact";
+        this.field_length_21_Characters="character length twen";
+        this.field_length_20_Characters="character length twe";
         this.field_length_51_Characters="character length fifty one character length fifty o";
         this.field_length_50_Characters="character length fifty character length fifty char";
         this.field_length_31_Characters="character length thirty one cha";

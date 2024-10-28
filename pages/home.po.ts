@@ -5,15 +5,15 @@ export class HomePage {
     readonly page: Page;
     readonly userNameHeader: Locator;
     readonly logOutLink: Locator;
-    readonly masterDataMenu: Locator;
-    readonly childTypeMenu: Locator;
+    //readonly masterDataMenu: Locator;
+    //readonly childTypeMenu: Locator;
     readonly sideMenubar: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.userNameHeader = page.getByRole('heading', { name: 'System Admin' });
-        this.masterDataMenu=page.getByRole('button', { name: 'Master Data' })
-        this.childTypeMenu=page.getByRole('link', { name: 'Child Types' })
+        //this.masterDataMenu=page.getByRole('button', { name: 'Master Data' })
+        //this.childTypeMenu=page.getByRole('link', { name: 'Child Types' })
         this.logOutLink=page.getByText(' Logout');
         this.sideMenubar=page.locator('#mySidenav');
     }

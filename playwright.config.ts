@@ -14,7 +14,7 @@ require('dotenv').config();
  * See https://playwright.dev/docs/test-configuration.
  */
 
-export const STORAGE_STATE = path.join(__dirname, './setup/.auth/user.json');
+//export const STORAGE_STATE = path.join(__dirname, './setup/.auth/user.json');
 
 export default defineConfig({
   testDir: './tests',
@@ -23,7 +23,7 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 1 : 1,
+  retries: process.env.CI ? 1 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -40,7 +40,7 @@ export default defineConfig({
     trace: 'on',
   },
   //timeout: 60000,
-  timeout: 150 * 1000,
+  timeout: 60 * 1000,
   expect: {
     timeout: 30000,
   },
@@ -62,7 +62,7 @@ export default defineConfig({
         ignoreHTTPSErrors: true,
       },
       testMatch: '**/*.spec.ts',
-      dependencies: ['setup'],
+      //dependencies: ['setup'],
     },
 
     // {
